@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link'
+import { useEffect, useRef, useState } from 'react'
 
 export type Project = {
   title: string
@@ -19,20 +22,69 @@ const projects: Project[] = [
     description: 'A Linux Kernel for AI Agents',
     githubUrl: 'https://github.com/stableagents/stableagents',
     date: '2025-05'
-  }
+  },
 ]
 
 export function BuildingInPublic() {
+  const [activeIndexes, setActiveIndexes] = useState<number[]>([]);
+  const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const newActiveIndexes: number[] = [];
+      
+      projectRefs.current.forEach((ref, index) => {
+        if (!ref) return;
+        
+        const rect = ref.getBoundingClientRect();
+        const isVisible = 
+          rect.top < window.innerHeight * 0.8 && 
+          rect.bottom > window.innerHeight * 0.2;
+        
+        if (isVisible) {
+          newActiveIndexes.push(index);
+        }
+      });
+      
+      setActiveIndexes(newActiveIndexes);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="space-y-8">
       <h2 className="text-xl font-semibold tracking-tighter">Building in Public</h2>
-      <div className="space-y-10">
+      <div className="space-y-0 relative">
+        {/* Continuous timeline line */}
+        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-neutral-200 dark:bg-neutral-800" />
+        
         {projects.map((project, index) => (
-          <div key={index} className="relative pl-8 border-l-2 border-neutral-200 dark:border-neutral-800">
-            <div className="absolute -left-[9px] top-1 h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800" />
+          <div 
+            key={index}
+            ref={el => projectRefs.current[index] = el}
+            className="relative pl-8 py-8 transition-all duration-500"
+          >
+            {/* Circle indicator */}
+            <div 
+              className={`absolute -left-[5px] top-10 h-4 w-4 rounded-full border-2 border-neutral-200 dark:border-neutral-800 transition-all duration-500 ${
+                activeIndexes.includes(index) 
+                  ? 'bg-blue-500 dark:bg-blue-400 border-blue-500 dark:border-blue-400' 
+                  : 'bg-transparent'
+              }`} 
+            />
+            
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <h3 className="font-medium">{project.title}</h3>
+                <h3 className={`font-medium transition-all duration-500 ${
+                  activeIndexes.includes(index) ? 'text-blue-500 dark:text-blue-400' : ''
+                }`}>
+                  {project.title}
+                </h3>
                 <span className="text-sm text-neutral-500">{project.date}</span>
               </div>
               <p className="text-neutral-700 dark:text-neutral-300">{project.description}</p>
