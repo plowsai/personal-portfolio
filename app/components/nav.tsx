@@ -1,9 +1,11 @@
 import Link from 'next/link'
 
-const navItems = {
-  '/': {
-    name: 'home',
-  },
+type NavItem = {
+  name: string;
+}
+
+const navItems: Record<string, NavItem> = {
+  // Empty - home button removed
 }
 
 export function Navbar() {
