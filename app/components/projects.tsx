@@ -9,12 +9,6 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    title: 'Portfolio Website',
-    description: 'Personal portfolio website built with Next.js and TailwindCSS',
-    githubUrl: 'https://github.com/jordanplows/portfolio',
-    date: '2023-12'
-  },
-  {
     title: 'Personal Portfolio',
     description: 'A modern portfolio website built with Next.js, TailwindCSS, and MDX',
     githubUrl: 'https://github.com/plowsai/personal-portfolio',
