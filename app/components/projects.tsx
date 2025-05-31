@@ -14,7 +14,12 @@ const projects: Project[] = [
     githubUrl: 'https://github.com/jordanplows/portfolio',
     date: '2023-12'
   },
-  // Add more projects here
+  {
+    title: 'Personal Portfolio',
+    description: 'A modern portfolio website built with Next.js, TailwindCSS, and MDX',
+    githubUrl: 'https://github.com/plowsai/personal-portfolio',
+    date: '2024-03'
+  }
 ]
 
 export function BuildingInPublic() {
