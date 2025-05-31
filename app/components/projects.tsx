@@ -18,7 +18,7 @@ const projects: Project[] = [
     title: 'Stable Agents',
     description: 'A Linux Kernel for AI Agents',
     githubUrl: 'https://github.com/stableagents/stableagents',
-    date: '2024-03'
+    date: '2025-05'
   }
 ]
 
