@@ -12,12 +12,6 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    title: 'Personal Portfolio',
-    description: 'A modern portfolio website built with Next.js, TailwindCSS, and MDX',
-    githubUrl: 'https://github.com/plowsai/personal-portfolio',
-    date: '2024-03'
-  },
-  {
     title: 'Stable Agents',
     description: 'A Linux Kernel for AI Agents',
     githubUrl: 'https://github.com/stableagents/stableagents',
