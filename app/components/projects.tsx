@@ -13,8 +13,14 @@ export type Project = {
 const projects: Project[] = [
   {
     title: 'Stable Agents',
-    description: 'A Linux Kernel for AI Agents',
+    description: 'The standard for capable and reliable agents in production',
     githubUrl: 'https://github.com/stableagents/stableagents',
+    date: '2025-05'
+  },
+  {
+    title: 'Stable Desktop',
+    description: 'Create desktop apps using natural language. Say goodbye to electron',
+    githubUrl: 'https://github.com/stableagents/stabledesktop',
     date: '2025-05'
   },
 ]
