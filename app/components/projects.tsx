@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: 'Stable Desktop',
     description: 'Create desktop apps using natural language. Say goodbye to electron',
     githubUrl: 'https://github.com/stableagents/stabledesktop',
-    date: '2025-05'
+    date: '2025-06'
   },
 ]
 
